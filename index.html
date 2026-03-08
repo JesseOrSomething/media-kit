@@ -29,8 +29,6 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-
   body {
     background: var(--base);
     color: var(--text);
@@ -102,9 +100,7 @@
     transition: transform 0.3s ease;
   }
   @media (hover: hover) {
-    .avatar-wrap:hover {
-      transform: scale(1.04);
-    }
+    .avatar-wrap:hover { transform: scale(1.04); }
   }
 
   .avatar-wrap img {
@@ -156,24 +152,6 @@
   .card-title.gold { color: var(--gold); }
   .card-title.pine { color: var(--pine); }
 
-  .card-title .live-pill {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: var(--overlay);
-    border: 1px solid var(--hl-high);
-    border-radius: 999px;
-    padding: 3px 10px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 10px; font-weight: 500;
-    letter-spacing: 0.07em; color: var(--foam);
-  }
-
-  .live-dot {
-    width: 6px; height: 6px;
-    background: var(--foam); border-radius: 50%;
-    animation: blink 2s infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-
   /* ── ABOUT ── */
   .about-text {
     font-size: 15px; color: var(--subtle);
@@ -210,7 +188,6 @@
   .stat-value.foam-col { color: var(--foam); }
   .stat-value.gold-col { color: var(--gold); }
   .stat-value.iris-col { color: var(--iris); }
-  .stat-value.loading { color: var(--muted); font-size: 22px; }
 
   .stat-label {
     font-size: 12px; color: var(--muted);
@@ -220,11 +197,6 @@
   .stat-sublabel {
     font-size: 11px; color: var(--muted);
     margin-top: 2px;
-  }
-
-  .stat-live-tag {
-    font-size: 10px; color: var(--foam);
-    margin-top: 4px; letter-spacing: 0.04em;
   }
 
   /* ── GEOGRAPHY ── */
@@ -282,9 +254,7 @@
     transition: transform 0.3s ease;
   }
   @media (hover: hover) {
-    .contact-row:hover .contact-icon {
-      transform: scale(1.12);
-    }
+    .contact-row:hover .contact-icon { transform: scale(1.12); }
   }
 
   .contact-row a {
@@ -294,52 +264,13 @@
     .contact-row a:hover { text-decoration: underline; }
   }
 
+  /* plain email text (not a link, avoids Cloudflare mangling) */
+  .contact-plain {
+    color: var(--pine); font-weight: 500;
+    user-select: all;
+  }
+
   /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    font-size: 11px; color: var(--muted);
-    letter-spacing: 0.1em; padding-top: 32px;
-  }
-
-  /* ── EDIT FAB ── */
-  .fab-area {
-    position: fixed; bottom: 24px; right: 24px;
-    display: flex; flex-direction: column;
-    align-items: flex-end; gap: 10px; z-index: 100;
-  }
-  .edit-bubble {
-    background: var(--surface);
-    border: 1px solid var(--hl-high);
-    border-radius: var(--r-md);
-    font-size: 12px; color: var(--subtle);
-    padding: 10px 14px; max-width: 230px;
-    line-height: 1.5; display: none; box-shadow: 0 4px 16px rgba(87,82,121,0.08);
-  }
-  .edit-bubble.on { display: block; }
-  .edit-bubble strong { color: var(--iris); }
-  .fab-row { display: flex; gap: 10px; }
-  .fab {
-    border: none; border-radius: 999px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px; font-weight: 600;
-    padding: 11px 22px; cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.2s;
-  }
-  @media (hover: hover) {
-    .fab:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(87,82,121,0.15); }
-  }
-  .fab-edit {
-    background: var(--surface);
-    border: 1px solid var(--hl-high);
-    color: var(--subtle);
-  }
-  .fab-edit.on { background: var(--iris); color: var(--base); border-color: var(--iris); }
-  .fab-save { background: var(--pine); color: var(--base); display: none; }
-
-  [contenteditable="true"] {
-    outline: 2px dashed var(--iris);
-    border-radius: 6px; padding: 1px 4px; cursor: text;
-  }
 
   @media (max-width: 560px) {
     header { flex-direction: column-reverse; align-items: flex-start; }
@@ -358,9 +289,11 @@
       <p class="tagline">Hands on tech reviews • Honest opinions</p>
     </div>
     <div class="avatar-wrap">
-      <!-- Replace the src below with a hosted URL to your photo, or use Edit Mode to update -->
-      <img id="avatarImg" src="https://raw.githubusercontent.com/jesseorsomething/media-kit/main/images/jesse.png" onerror="this.style.display='none'; document.getElementById('avatarPlaceholder').style.display='flex';" alt="Jesse" style="display:none"/>
-      <div class="avatar-placeholder" id="avatarPlaceholder" title="In Edit Mode: paste your photo URL into the page source">
+      <img id="avatarImg"
+        src="https://raw.githubusercontent.com/JesseOrSomething/media-kit/main/images/jesse.png"
+        onerror="this.style.display='none'; document.getElementById('avatarPlaceholder').style.display='flex';"
+        alt="Jesse"/>
+      <div class="avatar-placeholder" id="avatarPlaceholder" style="display:none">
         📷<br>Add Photo
       </div>
     </div>
@@ -403,7 +336,7 @@
   <!-- GEOGRAPHY -->
   <div class="section">
     <div class="card">
-      <div class="card-title iris-col" style="color:var(--iris)">Geography</div>
+      <div class="card-title" style="color:var(--iris)">Geography</div>
       <p class="geo-text" id="geoText">My channel is aimed at UK and US audiences, however my shorts views are mostly from India and Malaysia.</p>
     </div>
   </div>
@@ -423,7 +356,7 @@
           <span class="rate-row-price" id="rate1price">£1,600</span>
         </div>
         <div class="rate-row">
-          <span class="rate-row-name" id="rate2name">Integration (30-60s)</span>
+          <span class="rate-row-name" id="rate2name">Integration (30–60s)</span>
           <span class="rate-row-price" id="rate2price">£500</span>
         </div>
       </div>
@@ -437,11 +370,11 @@
       <div class="contact-grid">
         <div class="contact-row">
           <div class="contact-icon">✉️</div>
-          <a id="contactEmail" href="/cdn-cgi/l/email-protection#8afae3f2efe6faeff8ecefe9fea4e9e5e4feebe9fee7efcaede7ebe3e6a4e9e5e7"><span class="__cf_email__" data-cfemail="abdbc2d3cec7dbced9cdcec8df85c8c4c5dfcac8dfc6ceebccc6cac2c785c8c4c6">[email&#160;protected]</span></a>
+          <span class="contact-plain" id="contactEmail">pixelperfect.contactme@gmail.com</span>
         </div>
         <div class="contact-row">
           <div class="contact-icon">▶️</div>
-          <a id="contactYT" href="http://www.youtube.com/@jesse-does-tech" target="_blank">youtube.com/@jesse-does-tech</a>
+          <a id="contactYT" href="https://www.youtube.com/@jesse-does-tech" target="_blank">youtube.com/@jesse-does-tech</a>
         </div>
       </div>
     </div>
@@ -450,83 +383,11 @@
   <footer>Jesse Does Tech · Media Kit · <span id="footerDate"></span></footer>
 </div>
 
-<!-- EDIT FAB -->
-<div class="fab-area">
-  <div class="edit-bubble" id="editBubble">Click any <strong>outlined field</strong> to edit. Hit <strong>Save</strong> when done — persists in your browser.</div>
-  <div class="fab-row">
-    <button class="fab fab-save" id="saveBtn" onclick="saveAll()">Save</button>
-    <button class="fab fab-edit" id="editToggle" onclick="toggleEdit()">✎ Edit</button>
-  </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const STORAGE_KEY = 'jdt_dawn_v1';
-
-  const EDITABLE = [
-    'aboutText','statSubs','statCTR','statViews','statViewsSub','statWatchTime',
-    'geoText','reviewUnitText',
-    'rate1name','rate1price','rate2name','rate2price',
-    'contactEmail','contactYT'
-  ];
-
-  let editing = false;
-
-  function loadSaved() {
-    try {
-      const d = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      EDITABLE.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && d[id]) el.textContent = d[id];
-      });
-      syncLinks();
-    } catch(e) {}
-  }
-
-  function syncLinks() {
-    const email = document.getElementById('contactEmail')?.textContent.trim();
-    if (email) document.getElementById('contactEmail').href = 'mailto:' + email;
-    const yt = document.getElementById('contactYT')?.textContent.trim();
-    if (yt) document.getElementById('contactYT').href = yt.startsWith('http') ? yt : 'https://' + yt;
-  }
-
-  function saveAll() {
-    const d = {};
-    EDITABLE.forEach(id => { const el = document.getElementById(id); if (el) d[id] = el.textContent.trim(); });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
-    syncLinks();
-    const b = document.getElementById('saveBtn');
-    b.textContent = '✓ Saved!';
-    setTimeout(() => b.textContent = 'Save', 2000);
-  }
-
-  function toggleEdit() {
-    editing = !editing;
-    document.getElementById('editToggle').textContent = editing ? '✕ Done' : '✎ Edit';
-    document.getElementById('editToggle').classList.toggle('on', editing);
-    document.getElementById('saveBtn').style.display = editing ? 'inline-block' : 'none';
-    document.getElementById('editBubble').classList.toggle('on', editing);
-    EDITABLE.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.contentEditable = editing ? 'true' : 'false';
-    });
-  }
 
 
-  // Try loading avatar from storage
-  try {
-    const d = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    if (d.avatarUrl) {
-      const img = document.getElementById('avatarImg');
-      img.src = d.avatarUrl;
-      img.style.display = 'block';
-      document.getElementById('avatarPlaceholder').style.display = 'none';
-    }
-  } catch(e) {}
-
+<script>
   document.getElementById('footerDate').textContent =
     new Date().toLocaleDateString('en-GB', {month:'long', year:'numeric'});
-
-  loadSaved();
 </script>
 </body>
 </html>
