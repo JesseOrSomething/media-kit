@@ -4,25 +4,29 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Jesse Does Tech – Media Kit</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  /* ── Rosé Pine Dawn ── */
+  /* ── Neumorphic soft UI ── */
   :root {
-    --base:    #faf4ed;
-    --surface: #fffaf3;
-    --overlay: #f2e9e1;
-    --muted:   #9893a5;
-    --subtle:  #797593;
-    --text:    #575279;
-    --love:    #b4637a;
-    --gold:    #ea9d34;
-    --rose:    #d7827a;
-    --pine:    #286983;
-    --foam:    #56949f;
-    --iris:    #907aa9;
-    --hl-low:  #f4ede8;
-    --hl-med:  #dfdad9;
-    --hl-high: #cecacd;
+    --base:    #dfe3e9;
+    --surface: #dfe3e9;
+    --overlay: #dfe3e9;
+    --muted:   #86868b;
+    --subtle:  #6e6e73;
+    --text:    #5c5f77;
+    --heading: #4c4f69;
+    --love:    #4c4f69;
+    --gold:    #4c4f69;
+    --rose:    #4c4f69;
+    --pine:    #0071e3;
+    --foam:    #4c4f69;
+    --iris:    #4c4f69;
+    --hl-low:  #f5f5f7;
+    --hl-med:  #e5e5e7;
+    --hl-high: #d2d2d7;
+
+    --shadow-dark:  rgba(148,163,184,0.7);
+    --shadow-light: rgba(255,255,255,0.95);
 
     --r-sm: 10px; --r-md: 16px; --r-lg: 20px; --r-xl: 28px;
   }
@@ -32,18 +36,36 @@
   body {
     background: var(--base);
     color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'League Spartan', sans-serif;
     font-weight: 400;
     line-height: 1.65;
     min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
-  /* soft glow blobs */
+  body.dark-mode {
+    --base:    #141414;
+    --surface: #141414;
+    --overlay: #141414;
+    --muted:   #9a9ea6;
+    --subtle:  #b4b8c0;
+    --text:    #d5d8de;
+    --heading: #f0f1f4;
+    --love:    #f0f1f4;
+    --gold:    #f0f1f4;
+    --rose:    #f0f1f4;
+    --foam:    #f0f1f4;
+    --iris:    #f0f1f4;
+    --shadow-dark:  rgba(0,0,0,0.75);
+    --shadow-light: rgba(255,255,255,0.04);
+  }
+
+  /* soft glow blobs (subtle, greyscale) */
   body::before {
     content: '';
     position: fixed;
     width: 600px; height: 600px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(144,122,169,0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%);
     top: -200px; right: -200px;
     pointer-events: none; z-index: 0;
   }
@@ -51,7 +73,7 @@
     content: '';
     position: fixed;
     width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(180,99,122,0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0,0,0,0.02) 0%, transparent 70%);
     bottom: -150px; left: -150px;
     pointer-events: none; z-index: 0;
   }
@@ -78,37 +100,106 @@
   .eyebrow {
     font-size: 11px; font-weight: 600;
     letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--iris); margin-bottom: 8px;
+    color: var(--muted); margin-bottom: 8px;
   }
 
   h1 {
-    font-family: 'Lora', serif;
-    font-size: clamp(36px, 6vw, 54px);
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(30px, 5vw, 46px);
     font-weight: 600; line-height: 1.1;
-    color: var(--text);
+    color: var(--heading);
   }
 
-  h1 em { font-style: italic; color: var(--rose); }
+  h1 em { font-style: normal; color: var(--heading); }
 
   .tagline {
     margin-top: 8px;
     font-size: 14px; color: var(--muted);
   }
 
-  .avatar-wrap {
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+  }
+
+  .circle-btn {
+    position: relative;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--base);
+    border: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .circle-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .circle-btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
   }
   @media (hover: hover) {
-    .avatar-wrap:hover { transform: scale(1.04); }
+    .circle-btn:hover::before { opacity: 0; }
+    .circle-btn:hover::after { opacity: 1; }
+  }
+
+  .circle-placeholder {
+    cursor: default;
+  }
+
+  .avatar-wrap {
+    flex-shrink: 0;
+    position: relative;
   }
 
   .avatar-wrap img {
     width: 100px; height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--hl-med);
+    border: none;
     display: block;
+    background: var(--base);
+  }
+
+  .avatar-wrap::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .avatar-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  @media (hover: hover) {
+    .avatar-wrap:hover::before { opacity: 0; }
+    .avatar-wrap:hover::after { opacity: 1; }
   }
 
 
@@ -118,34 +209,27 @@
 
   .card {
     background: var(--surface);
-    border: 1px solid var(--hl-med);
+    border: none;
     border-radius: var(--r-xl);
     padding: 28px 30px;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-  }
-  @media (hover: hover) {
-    .card:hover {
-      border-color: var(--hl-high);
-      box-shadow: 0 6px 24px rgba(87,82,121,0.08);
-      transform: translateY(-3px);
-    }
+    box-shadow: inset 7px 7px 14px var(--shadow-dark), inset -7px -7px 14px var(--shadow-light);
   }
 
   .card-title {
-    font-family: 'Lora', serif;
-    font-size: 22px; font-weight: 600;
-    color: var(--iris);
+    font-family: 'League Spartan', sans-serif;
+    font-size: 25px; font-weight: 600;
+    color: var(--heading);
     margin-bottom: 14px;
     display: flex; align-items: center; gap: 10px;
   }
 
-  .card-title.love { color: var(--love); }
-  .card-title.gold { color: var(--gold); }
-  .card-title.pine { color: var(--pine); }
+  .card-title.love { color: var(--text); }
+  .card-title.gold { color: var(--text); }
+  .card-title.pine { color: var(--text); }
 
   /* ── ABOUT ── */
   .about-text {
-    font-size: 15px; color: var(--subtle);
+    font-size: 17px; color: var(--subtle);
     line-height: 1.7;
   }
 
@@ -158,72 +242,131 @@
   }
 
   .stat-item {
+    position: relative;
     background: var(--overlay);
+    border: none;
     border-radius: var(--r-md);
     padding: 18px 16px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: transform 0.2s ease;
     cursor: default;
   }
+
+  .stat-item::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: var(--r-md);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .stat-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: var(--r-md);
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
   @media (hover: hover) {
-    .stat-item:hover {
-      box-shadow: 0 4px 14px rgba(87,82,121,0.09);
-      transform: translateY(-3px);
-    }
+    .stat-item:hover::before { opacity: 0; }
+    .stat-item:hover::after { opacity: 1; }
+    .stat-item:hover { transform: scale(0.98); }
   }
 
   .stat-value {
-    font-family: 'Lora', serif;
+    font-family: 'League Spartan', sans-serif;
     font-size: 34px; font-weight: 600;
-    line-height: 1; color: var(--love);
+    line-height: 1; color: var(--text);
+    transition: transform 0.2s ease;
   }
-  .stat-value.foam-col { color: var(--foam); }
-  .stat-value.gold-col { color: var(--gold); }
-  .stat-value.iris-col { color: var(--iris); }
+  .stat-value.love-col { color: #d20f39; }
+  .stat-value.foam-col { color: #d20f39; }
+  .stat-value.gold-col { color: #d20f39; }
+  .stat-value.iris-col { color: #d20f39; }
 
   .stat-label {
-    font-size: 12px; color: var(--muted);
+    font-size: 14px; color: var(--muted);
     margin-top: 5px; font-weight: 500;
+    transition: transform 0.2s ease;
   }
 
   .stat-sublabel {
-    font-size: 11px; color: var(--muted);
+    font-size: 13px; color: var(--muted);
     margin-top: 2px;
+    transition: transform 0.2s ease;
+  }
+
+  .stat-item:hover .stat-value,
+  .stat-item:hover .stat-label,
+  .stat-item:hover .stat-sublabel {
+    transform: scale(0.94);
   }
 
   /* ── GEOGRAPHY ── */
   .geo-text {
-    font-size: 14px; color: var(--subtle); line-height: 1.65;
+    font-size: 16px; color: var(--subtle); line-height: 1.65;
   }
 
   /* ── SPONSORSHIPS ── */
-  .sponsor-body { font-size: 14px; color: var(--subtle); line-height: 1.7; }
+  .sponsor-body { font-size: 16px; color: var(--subtle); line-height: 1.7; }
   .sponsor-body strong { color: var(--text); font-weight: 600; }
 
   .rates-list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
 
   .rate-row {
+    position: relative;
     display: flex; align-items: center;
     justify-content: space-between;
     background: var(--overlay);
+    border: none;
     border-radius: var(--r-md);
     padding: 14px 18px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: transform 0.2s ease;
     cursor: default;
   }
+
+  .rate-row::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: var(--r-md);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .rate-row::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: var(--r-md);
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
   @media (hover: hover) {
-    .rate-row:hover {
-      box-shadow: 0 4px 14px rgba(87,82,121,0.09);
-      transform: translateY(-2px);
-    }
+    .rate-row:hover::before { opacity: 0; }
+    .rate-row:hover::after { opacity: 1; }
+    .rate-row:hover { transform: scale(0.98); }
   }
 
   .rate-row-name {
-    font-size: 14px; font-weight: 500; color: var(--text);
+    font-size: 16px; font-weight: 500; color: var(--text);
+    transition: transform 0.2s ease;
   }
 
   .rate-row-price {
-    font-family: 'Lora', serif;
-    font-size: 20px; font-weight: 600; color: var(--gold);
+    font-family: 'League Spartan', sans-serif;
+    font-size: 20px; font-weight: 600; color: #40a02b;
+    transition: transform 0.2s ease;
+  }
+
+  .rate-row:hover .rate-row-name,
+  .rate-row:hover .rate-row-price {
+    transform: scale(0.94);
   }
 
   /* ── CONTACT ── */
@@ -233,12 +376,13 @@
 
   .contact-row {
     display: flex; align-items: center; gap: 12px;
-    font-size: 14px; color: var(--subtle);
+    font-size: 16px; color: var(--subtle);
   }
 
   .contact-icon {
     width: 32px; height: 32px;
     background: var(--overlay);
+    border: none;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: 15px; flex-shrink: 0;
@@ -249,7 +393,7 @@
   }
 
   .contact-row a {
-    color: var(--pine); text-decoration: none; font-weight: 500;
+    color: #04a5e5; text-decoration: none; font-weight: 500;
   }
   @media (hover: hover) {
     .contact-row a:hover { text-decoration: underline; }
@@ -257,7 +401,7 @@
 
   /* plain email text (not a link, avoids Cloudflare mangling) */
   .contact-plain {
-    color: var(--pine); font-weight: 500;
+    color: #ea76cb; font-weight: 500;
     user-select: all;
   }
 
@@ -279,8 +423,22 @@
       <h1>Jesse <em>Does</em> Tech</h1>
       <p class="tagline">Hands on tech reviews • Honest opinions</p>
     </div>
-    <div class="avatar-wrap">
-      <img src="https://jesseorsomething.github.io/media-kit/images/jesse.png" alt="Jesse"/>
+    <div class="header-right">
+      <a class="circle-btn" id="emailCircle" href="mailto:jessedoestech.business@gmail.com" aria-label="Email" style="color:#179299; text-decoration:none;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m2 6 10 7 10-7"/>
+        </svg>
+      </a>
+      <button class="circle-btn" id="themeToggle" aria-label="Toggle dark mode" style="color:#fe640b;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+      <div class="avatar-wrap">
+        <img src="https://jesseorsomething.github.io/media-kit/images/jesse.png" alt="Jesse"/>
+      </div>
     </div>
   </header>
 
@@ -321,7 +479,7 @@
   <!-- GEOGRAPHY -->
   <div class="section">
     <div class="card">
-      <div class="card-title" style="color:var(--iris)">Geography</div>
+      <div class="card-title" style="color:var(--heading)">Geography</div>
       <p class="geo-text" id="geoText">My channel is aimed at UK and US audiences.</p>
     </div>
   </div>
@@ -335,14 +493,18 @@
         <p id="reviewUnitText" style="margin-top:6px">I only make full videos on smartphones, tablets, and laptops. Howerver, I still offer integrations and shorts for other tech products.</p>
       </div>
       <div class="rates-list">
-        <div style="margin-top:4px; font-size:13px; font-weight:600; color:var(--subtle); letter-spacing:0.05em;">Sponsorship Rates</div>
+        <div style="margin-top:4px; font-size:14px; font-weight:600; color:var(--subtle); letter-spacing:0.05em;">Sponsorship Rates</div>
         <div class="rate-row">
           <span class="rate-row-name" id="rate1name">Full Video</span>
           <span class="rate-row-price" id="rate1price">£1600</span>
         </div>
         <div class="rate-row">
-          <span class="rate-row-name" id="rate2name">Integration (30–90s)</span>
+          <span class="rate-row-name" id="rate2name">Integration</span>
           <span class="rate-row-price" id="rate2price">£400</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-row-name" id="rate3name">Short</span>
+          <span class="rate-row-price" id="rate3price">£200</span>
         </div>
       </div>
     </div>
@@ -351,28 +513,23 @@
   <!-- CONTACT -->
   <div class="section">
     <div class="card">
-      <div class="card-title" style="color:var(--rose)">Contact Me</div>
+      <div class="card-title" style="color:var(--heading)">Contact Me</div>
       <div class="contact-grid">
         <div class="contact-row">
-          <div class="contact-icon">✉️</div>
           <span class="contact-plain" id="contactEmail">jessedoestech.business@gmail.com</span>
         </div>
         <div class="contact-row">
-          <div class="contact-icon">▶️</div>
           <a id="contactYT" href="https://www.youtube.com/@jesse-does-tech" target="_blank">youtube.com/@jesse-does-tech</a>
         </div>
       </div>
     </div>
   </div>
 
-  <footer>Jesse Does Tech · Media Kit · <span id="footerDate"></span></footer>
-</div>
-
-
-
 <script>
-  document.getElementById('footerDate').textContent =
-    new Date().toLocaleDateString('en-GB', {month:'long', year:'numeric'});
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
 </script>
 </body>
 </html>
